@@ -18,12 +18,26 @@ var fight = function() {
   console.log(
     playerName + " attacked " + enemyName + ". " + enemyName + " now has " + enemyHealth + " health remaining."
   );
+  // check enemy's health
+  if (enemyHealth <= 0) {
+    window.alert(enemyName + " has died!");
+  }
+  else {
+    window.alert(enemyName + " still has " + enemyHealth + " health left.");
+  }
   // enemy attacks: playerHealth - enemyAttack, new value stored in playerHealth
   playerHealth = playerHealth - enemyAttack;
   // log a resulting message to console to show it worked
   console.log(
     enemyName + " attacked " + playerName + ". " + playerName + " now has " + playerHealth + " health remaining."
   );
+  // check player's health
+  if (playerHealth <= 0) {
+    window.alert(playerName + " has died!");
+  }
+  else {
+    window.alert(playerName + " still has " + playerHealth + " health left.");
+  }
 };
 
 fight();
