@@ -66,7 +66,7 @@ var fight = function(enemyName) {
 
 for(var i = 0; i < enemyNames.length; i++) {
   if (playerHealth > 0) {
-    // let player know what round they ar in
+    // let player know what round they are in
     window.alert("Welcome to Robot Gladiators! Round " + (i + 1));
     // pick new enemy to fight based on the index of the enemyNames array
     var pickedEnemyName = enemyNames[i];
