@@ -5,7 +5,6 @@
 // "LOSE" - Player robot's health is zero or less
 
 var fightOrSkip = function() {
-  debugger;
   // ask player if they'd like to fight or skip using fightOrSkip()
   var promptFight = window.prompt("Would you like to FIGHT or SKIP this battle? Enter 'FIGHT' or 'SKIP' to choose.");
   promptFight = promptFight.toLowerCase();
