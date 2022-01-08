@@ -4,15 +4,26 @@
 //   * Defeat each enemy-robot
 // "LOSE" - Player robot's health is zero or less
 
+// Game Functions Start
+
+// function to generate a random numeric value
+var randomNumber = function(min, max) {
+  var value = Math.floor(Math.random() * (max - min +1) + min);
+  // returns value to where randomNumber was called
+  return value;
+};
+
+// ask player if they'd like to fight or skip using fightOrSkip()
 var fightOrSkip = function() {
-  // ask player if they'd like to fight or skip using fightOrSkip()
   var promptFight = window.prompt("Would you like to FIGHT or SKIP this battle? Enter 'FIGHT' or 'SKIP' to choose.");
-  promptFight = promptFight.toLowerCase();
   // Conditional Recursive Function Call
   if (promptFight === "" || promptFight === null) {
     window.alert("You need to provide a valid answer! Please try again.");
+    // use return to call it again and stop the rest of this function from running
     return fightOrSkip();
   }
+  // convert promptFight to all lowercase so it is simpler to check
+  promptFight = promptFight.toLowerCase();
   if (promptFight === "skip") {
     // confirm player wants to skip
     var confirmSkip = window.confirm("Are you sure you'd like to quit?");
@@ -26,7 +37,9 @@ var fightOrSkip = function() {
     }
   }
   return false;
-}
+};
+
+// fight function with parameter for enemy's object holding name, health and attack values
 var fight = function(enemy) {
   // keep track of who goes first
   var isPlayerTurn = true;
@@ -89,6 +102,9 @@ var startGame = function() {
   // reset player stats
   playerInfo.reset();
   for(var i = 0; i < enemyInfo.length; i++) {
+    // check player stats
+    console.log(playerInfo)
+    // if player is still alive, keep fighting
     if (playerInfo.health > 0) {
       // let player know what round they are in
       window.alert("Welcome to Robot Gladiators! Round " + (i + 1));
@@ -98,7 +114,7 @@ var startGame = function() {
       pickedEnemyObj.health = randomNumber(40, 60);
       // use debugger to pause script from running and check whats goin on
       // debugger;
-      
+      console.log(pickedEnemyObj);      
       // pass pickedEnemyName's value into fight function where it will
       // assume the value of enemyName parameter
       fight(pickedEnemyObj);
@@ -175,13 +191,6 @@ var shop = function() {
   }
 };
 
-// function to generate a random numeric value
-var randomNumber = function(min, max) {
-  var value = Math.floor(Math.random() * (max - min +1) + min);
-  // returns value to where randomNumber was called
-  return value;
-};
-
 // function to set name
 var getPlayerName = function() {
   var name = "";
@@ -191,8 +200,10 @@ var getPlayerName = function() {
   }
   console.log("Your robot's name is " + name);
   return name;
-}
+};
+// Game Functions End
 
+// Game Information/Variables
 // custom object for player stats
 var playerInfo = {
   name: getPlayerName(),
@@ -215,7 +226,7 @@ var playerInfo = {
   },
   upgradeAttack: function() {
     if (this.money >= 7) {
-      window.alert("Refilling player's health by 20 for 7 dollars.");
+      window.alert("Upgrading player's attack by 6 for 7 dollars.");
       this.attack += 6;
       this.money -= 7;
     } else {
